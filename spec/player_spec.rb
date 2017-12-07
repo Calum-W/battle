@@ -15,21 +15,4 @@ describe Player do
       expect(mortimer.hp).to eq described_class::STARTING_HP
     end
   end
-
-  describe '#attack' do
-    it 'calls the method receive_damage on the player attacked' do
-      expect(reginald).to receive(:receive_damage)
-      mortimer.attack(reginald)
-    end
-  end
-
-
-  describe '#receive damage' do
-    it 'reduces the enemies HP by a given amount' do
-      expect{ reginald.receive_damage(Player::DEFAULT_DAMAGE) }.to change { reginald.hp }.by -Player::DEFAULT_DAMAGE
-    end
-  end
-
-
-
 end
