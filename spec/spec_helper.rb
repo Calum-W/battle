@@ -2,6 +2,7 @@ require 'capybara/rspec'
 require 'capybara'
 require 'rspec'
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
+require 'features/web_helpers'
 
 ENV['RACK_ENV'] = 'test'
 
