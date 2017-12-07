@@ -2,14 +2,21 @@ require 'sinatra/base'
 require 'shotgun'
 
 class Battle < Sinatra::Base
+  enable :sessions
+
   get '/' do
-    'Testing infrastructure working!'
     erb(:ready)
   end
 
   post '/names' do
-    @p1 = params[:P1]
-    @p2 = params[:P2]
+    session[:P1] = params[:P1]
+    session[:P2] = params[:P2]
+    redirect '/play'
+  end
+
+  get '/play' do
+    @p1 = session[:P1]
+    @p2 = session[:P2]
     erb(:play)
   end
 
