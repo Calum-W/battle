@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require 'shotgun'
-require 'player.rb'
+require './lib/player.rb'
 
 class Battle < Sinatra::Base
 
@@ -23,6 +23,7 @@ class Battle < Sinatra::Base
   get '/attack' do
     @P1_name = $P1.name
     @P2_name = $P2.name
+    $P1.attack($P2)
     erb(:attack)
   end
 
