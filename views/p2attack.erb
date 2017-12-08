@@ -8,19 +8,19 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<%=@game.P2.name%> attacked <%=@game.P1.name%>
+<%=@current_game.P2.name%> attacked <%=@current_game.P1.name%>
 <br>
 <div class="progress">
   <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70"
-  aria-valuemin="0" aria-valuemax="100" style="width: <%=$current_game.P1.hp%>">
-    <span class="sr-only"><%=$current_game.P2.hp%>% Complete</span>
+  aria-valuemin="0" aria-valuemax="100" style="width: <%=@current_game.P1.hp%>">
+    <span class="sr-only"><%=@current_game.P2.hp%>% Complete</span>
   </div>
 </div>
 
 <div class="progress">
   <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70"
-  aria-valuemin="0" aria-valuemax="100" style="width: <%=$current_game.P2.hp%>">
-    <span class="sr-only"><%=$current_game.P1.hp%>% Complete</span>
+  aria-valuemin="0" aria-valuemax="100" style="width: <%=@current_game.P2.hp%>">
+    <span class="sr-only"><%=@current_game.P1.hp%>% Complete</span>
   </div>
 </div>
 

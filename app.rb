@@ -11,32 +11,34 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-    $current_game = Game.new({ :name1 => params[:P1], :name2 => params[:P2] })
+    @current_game = Game.create({ :name1 => params[:P1], :name2 => params[:P2] })
     redirect '/play'
   end
 
+  before do
+    @current_game = Game.instance
+  end
+
   get '/play' do
-    @P1_name = $current_game.P1.name
-    @P2_name = $current_game.P2.name
+    @P1_name = @current_game.P1.name
+    @P2_name = @current_game.P2.name
     erb(:play)
   end
 
   get '/attack' do
-    @game = $current_game
-    $current_game.attack(@game.P2)
-    redirect '/game_over' if $current_game.P2.dead?
+    @current_game.attack(@current_game.P2)
+    redirect '/game_over' if @current_game.P2.dead?
     erb(:attack)
   end
 
   get '/p2attack' do
-    @game = $current_game
-    $current_game.attack(@game.P1)
-    redirect '/game_over' if $current_game.P1.dead?
+    @current_game.attack(@current_game.P1)
+    redirect '/game_over' if @current_game.P1.dead?
     erb(:p2attack)
   end
 
   get '/game_over' do
-    @winner = $current_game.P1.dead? ? $current_game.P2 : $current_game.P1
+    @winner = @current_game.P1.dead? ? @current_game.P2 : @current_game.P1
     erb(:game_over)
   end
 
