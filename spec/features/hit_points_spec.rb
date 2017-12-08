@@ -11,4 +11,9 @@ feature 'attacking' do
     click_button 'P2 ATTACK'
     expect(page).to have_content 'dragon attacked cal'
   end
+  scenario "shows a bar with P1's remaining HP" do
+    sign_in_and_play
+    click_button 'P2 ATTACK'
+    expect(page).to have_content "90"
+  end
 end
