@@ -9,4 +9,8 @@ class Player
     @name = name
     @hp = STARTING_HP
   end
+
+  def dead?
+    @hp.zero?
+  end
 end

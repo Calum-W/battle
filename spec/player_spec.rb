@@ -15,4 +15,11 @@ describe Player do
       expect(mortimer.hp).to eq described_class::STARTING_HP
     end
   end
+
+  describe '#dead?' do
+    it 'returns true if a player is at 0HP' do
+      reginald.hp = 0
+      expect(reginald.dead?).to eq true
+    end
+  end
 end

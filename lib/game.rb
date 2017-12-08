@@ -12,5 +12,6 @@ class Game
 
   def attack(victim, amount = DEFAULT_DAMAGE)
     victim.hp -= DEFAULT_DAMAGE
+
   end
 end

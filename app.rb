@@ -24,13 +24,20 @@ class Battle < Sinatra::Base
   get '/attack' do
     @game = $current_game
     $current_game.attack(@game.P2)
+    redirect '/game_over' if $current_game.P2.dead?
     erb(:attack)
   end
 
   get '/p2attack' do
     @game = $current_game
     $current_game.attack(@game.P1)
+    redirect '/game_over' if $current_game.P1.dead?
     erb(:p2attack)
+  end
+
+  get '/game_over' do
+    @winner = $current_game.P1.dead? ? $current_game.P2 : $current_game.P1
+    erb(:game_over)
   end
 
   run if app_file == $0
