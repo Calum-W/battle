@@ -22,10 +22,8 @@ class Battle < Sinatra::Base
   end
 
   get '/attack' do
-    @P1_name = $current_game.P1.name
-    @P2_name = $current_game.P2.name
-    @P2 = $current_game.P2
-    $current_game.attack(@P2)
+    @game = $current_game
+    $current_game.attack(@game.P2)
     erb(:attack)
   end
 
