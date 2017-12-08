@@ -1,8 +1,10 @@
 require 'sinatra/base'
 require 'shotgun'
-require './lib/player.rb'
+require_relative './lib/player.rb'
+require_relative './lib/game.rb'
 
 class Battle < Sinatra::Base
+  set :session_secret, 'supersecret'
 
   get '/' do
     erb(:ready)
